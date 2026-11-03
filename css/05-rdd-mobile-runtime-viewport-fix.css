@@ -1,0 +1,22 @@
+
+/* Runtime fix: some Android local-file browsers report a desktop-width CSS viewport.
+   Apply phone layout from the touch/portrait class, not width media queries alone. */
+html.rdd-mobile, html.rdd-mobile body { width:100%!important; height:100%!important; height:100dvh!important; min-height:0!important; overflow:hidden!important; }
+html.rdd-mobile #app { display:block!important; position:relative!important; width:100%!important; height:100%!important; height:100dvh!important; min-height:0!important; overflow:hidden!important; }
+html.rdd-mobile #stage { position:absolute!important; inset:0!important; width:100%!important; height:100%!important; min-width:0!important; min-height:0!important; }
+html.rdd-mobile #hud { position:absolute!important; left:50%!important; right:auto!important; top:calc(8px + var(--safe-top))!important; bottom:auto!important; transform:translateX(-50%)!important; display:block!important; width:max-content!important; height:max-content!important; min-width:0!important; min-height:0!important; max-width:calc(100vw - 126px)!important; max-height:none!important; flex:none!important; padding:7px 12px 8px!important; overflow:visible!important; border-radius:16px!important; z-index:20!important; }
+html.rdd-mobile #hud #num { font-size:clamp(24px,6vw,32px)!important; line-height:1.05!important; }
+html.rdd-mobile #hud #rate { font-size:10px!important; line-height:1.2!important; white-space:nowrap!important; }
+html.rdd-mobile #hud #badges { display:flex!important; max-height:26px!important; overflow:hidden!important; flex-wrap:wrap!important; }
+html.rdd-mobile #panel { position:absolute!important; inset:auto 0 0 0!important; display:flex!important; flex-direction:column!important; width:100%!important; height:min(44dvh,390px)!important; min-height:0!important; max-height:66dvh!important; flex:none!important; border-radius:20px 20px 0 0!important; padding:0 0 var(--safe-bot)!important; overflow:hidden!important; z-index:80!important; }
+html.rdd-mobile #app.peek #panel { display:none!important; height:0!important; }
+html.rdd-mobile #app.peek #panel-head, html.rdd-mobile #app.peek #list, html.rdd-mobile #app.peek #ach, html.rdd-mobile #app.peek #cfg, html.rdd-mobile #app.peek #nb { display:none!important; }
+html.rdd-mobile #nav-bar { left:8px!important; right:8px!important; bottom:calc(8px + var(--safe-bot))!important; width:auto!important; max-width:none!important; display:flex!important; z-index:40!important; }
+html.rdd-mobile #app:not(.peek) #nav-bar { display:none!important; }
+html.rdd-mobile #mobile-upgrade-launch { position:absolute!important; left:50%!important; right:auto!important; top:auto!important; bottom:calc(72px + var(--safe-bot))!important; transform:translateX(-50%)!important; display:flex!important; z-index:45!important; white-space:nowrap!important; }
+html.rdd-mobile #app:not(.peek) #mobile-upgrade-launch { display:none!important; }
+html.rdd-mobile #rdd-v96-launch { position:absolute!important; left:auto!important; right:10px!important; top:calc(58px + var(--safe-top))!important; bottom:auto!important; z-index:55!important; }
+html.rdd-mobile #rdd-v96-panel { left:12px!important; right:12px!important; top:50%!important; bottom:auto!important; width:auto!important; max-width:none!important; max-height:calc(100dvh - 32px - var(--safe-top) - var(--safe-bot))!important; overflow:auto!important; transform:translateY(-50%)!important; z-index:10021!important; }
+html.rdd-mobile #toast { left:12px!important; right:12px!important; top:calc(108px + var(--safe-top))!important; bottom:auto!important; width:auto!important; max-width:none!important; z-index:100!important; }
+@media (max-width:390px) { html.rdd-mobile #hud { max-width:calc(100vw - 116px)!important; padding:6px 9px 7px!important; } html.rdd-mobile #hud #num { font-size:24px!important; } }
+
