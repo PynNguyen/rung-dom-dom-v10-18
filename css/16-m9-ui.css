@@ -1,0 +1,27 @@
+
+/* ===== M9 · every phone feature reachable from one hub, no legacy overlaps ===== */
+html.rdd-mobile body #stage #exp-launch,html.rdd-mobile body #stage #minigame-launch,html.rdd-mobile body #stage #world-launch,html.rdd-mobile body #rdd-v96-launch#rdd-v96-launch{display:none!important}
+html.rdd-mobile body #app #stage #m9-menu-btn{position:absolute!important;top:calc(8px + env(safe-area-inset-top,0px))!important;right:58px!important;left:auto!important;width:42px!important;height:42px!important;padding:0!important;border-radius:14px!important;font-size:20px!important;display:flex!important;align-items:center;justify-content:center;z-index:42!important}
+html.rdd-mobile body #app #stage #m9-menu-btn[aria-expanded="true"]{background:linear-gradient(160deg,#e3c066,#a9792b)!important;color:#25180a!important}
+#m9-scrim{position:absolute;inset:0;z-index:79;display:none}
+#m9-scrim.on{display:block}
+#m9-menu{position:absolute;top:calc(58px + env(safe-area-inset-top,0px));right:10px;width:min(310px,calc(100% - 20px));display:none;flex-direction:column;gap:6px;padding:8px;border-radius:18px;background:rgba(9,16,36,.97);border:1px solid rgba(255,225,165,.3);box-shadow:0 14px 36px rgba(0,0,0,.6);z-index:80;transform-origin:top right}
+#m9-menu.on{display:flex;animation:m9in .16s ease-out}
+@keyframes m9in{from{opacity:0;transform:scale(.94) translateY(-6px)}to{opacity:1;transform:none}}
+#m9-menu button{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:8px 12px;border-radius:13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);color:#f4ecd2;font:700 14px/1.2 system-ui,sans-serif;text-align:left;cursor:pointer}
+#m9-menu button:active{background:rgba(255,225,165,.16)}
+#m9-menu button .ic{font-size:23px;width:30px;text-align:center;flex:0 0 30px}
+#m9-menu button small{display:block;margin-top:2px;font:400 11px/1.25 system-ui,sans-serif;opacity:.72}
+/* inside the legacy cards: button and the note under it must not touch */
+#exp-overlay .exp-btn+.exp-muted,#exp-overlay .exp-btn+*{margin-top:12px!important}
+#exp-overlay .exp-card,#exp-overlay [class*="card"]{overflow:visible}
+@media (max-height:480px) and (orientation:landscape){
+  html.rdd-mobile body #app{--m7-dock:46px}
+  html.rdd-mobile body #app.peek #stage #nav-bar .loc-pill .ln{display:none!important}
+  html.rdd-mobile body #app.peek #stage #mobile-upgrade-launch{width:74px!important}
+  html.rdd-mobile body #app.peek #stage #nav-bar{right:calc(10px + 74px + 8px)!important}
+  html.rdd-mobile body #app.peek #stage #mobile-upgrade-launch::after{font-size:10px!important}
+  html.rdd-mobile body #app:not(.peek) #panel{height:min(62vh,300px)!important}
+}
+
+
