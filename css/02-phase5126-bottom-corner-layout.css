@@ -1,0 +1,35 @@
+
+/* Phase 5.12.6: keep score in the lower-right corner; reflow the world selector to the left so neither covers the playfield or overlaps. */
+#hud{
+  left:auto!important; right:8px!important; top:auto!important; bottom:10px!important;
+  transform:none!important; text-align:center; width:108px!important; min-width:0!important;
+  max-width:calc(100vw - 24px)!important; padding:4px 5px 5px!important;
+  border-radius:11px!important; box-shadow:0 3px 9px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.06)!important;
+  backdrop-filter:blur(4px)!important; -webkit-backdrop-filter:blur(4px)!important;
+  background:linear-gradient(160deg,rgba(15,26,54,.72),rgba(4,9,24,.76))!important;
+}
+#num{font-size:18px!important;line-height:1!important;letter-spacing:0!important;filter:drop-shadow(0 1px 3px rgba(255,210,90,.18))!important}
+#rate{font-size:7.5px!important;margin-top:1px!important;white-space:nowrap}
+#badges{gap:2px!important;margin-top:2px!important}
+#badges .badge{font-size:6.5px!important;padding:1px 3px!important}
+#hud.pulse{transform:scale(1.01)!important}
+#nav-bar{
+  left:8px!important; right:124px!important; bottom:10px!important; width:auto!important;
+  max-width:none!important; transform:none!important; justify-content:space-around!important;
+  gap:2px!important; padding:4px 5px!important; border-radius:20px!important;
+}
+#nav-bar .loc-pill{flex:1 1 0!important; min-width:0!important; padding:7px 5px!important; text-align:center!important}
+@media(max-width:560px){
+  #hud{right:8px!important;bottom:10px!important;width:108px!important;padding:4px 4px 5px!important;border-radius:10px!important}
+  #nav-bar{left:8px!important;right:122px!important;bottom:10px!important;gap:1px!important;padding:4px!important}
+  #nav-bar .loc-pill{padding:7px 3px!important;font-size:12px!important}
+  #num{font-size:18px!important}
+  #rate{font-size:7.5px!important;letter-spacing:-.2px}
+  #badges .badge{font-size:6.5px!important;padding:1px 3px!important}
+}
+@media(max-width:380px){
+  #nav-bar{right:116px!important;left:5px!important}
+  #hud{right:5px!important;width:104px!important}
+  #nav-bar .loc-pill{padding:6px 2px!important}
+}
+
