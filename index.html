@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Rừng Đom Đóm v10.18</title>
+<meta name="theme-color" content="#050b1d">
+<meta name="description" content="Rừng Đom Đóm — thế giới truyện tranh ấm áp, sinh vật sống động và tổ ấm dưới trăng.">
+<link rel="stylesheet" href="css/01-style.css">
+<!-- Phase 5.3: pet evolution appearance + idle breathing/action cues; preserves game systems and save key rdd5. -->
+<!-- Autonomous Companions & Real Skills VI: removes legacy follower emoji passes and overhead rotating rune ring. Save key rdd5 is unchanged. -->
+<script src="js/01-head-responsive-guard.js"></script>
+<script src="js/02-reset-startup-guard.js"></script>
+
+
+<link rel="stylesheet" href="css/02-phase5126-bottom-corner-layout.css">
+
+<!-- Maintenance: duplicate legacy implementations removed; final renderer implementations are authoritative. Keep responsive HUD override consolidated at the end of the stylesheet. -->
+<!-- V9.0 performance: conservative mobile DPR, adaptive quality tiers, and hidden-tab render pause. -->
+<!-- V9.3: cache reusable glow sprites with bounded memory; preserve DPR and gameplay. -->
+<!-- V9.1: mobile devices start at low FX; adaptive quality cannot promote them to expensive tier 0. -->
+<!-- V9.1.1: Canvas DPR floor 1.0 prevents low-resolution upscaling blur. -->
+<!-- V9.2: reuse Canvas gradients across frames; no quality reduction or content removal. -->
+<!-- V9.3: reusable radial glow sprites; bounded cache avoids repeated gradient construction. -->
+
+<link rel="stylesheet" href="css/03-rdd-v15-artisan-polish.css">
+
+
+<link rel="stylesheet" href="css/04-rdd-mobile-ux-rebuild-v2.css">
+
+
+<link rel="stylesheet" href="css/05-rdd-mobile-runtime-viewport-fix.css">
+<script id="rdd-mobile-runtime-viewport-fix-init" src="js/03-rdd-mobile-runtime-viewport-fix-init.js"></script>
+
+
+<link rel="stylesheet" href="css/06-rdd-mobile-cohesive-layout-v4.css">
+
+
+<link rel="stylesheet" href="css/07-rdd-v6-mobile-layout-final.css">
+
+<link rel="stylesheet" href="css/08-rdd-expedition-style.css">
+<link rel="stylesheet" href="css/09-rdd-fix-hud-chip.css">
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <canvas id="cv"></canvas>
+    <div id="hud">
+      <div id="num">0</div>
+      <div id="rate">0/giây</div>
+      <div id="badges"></div>
+    </div>
+    <button id="home" class="top-btn" title="Vào/Ra nhà (E)">🏠</button>
+    <button id="wth" class="top-btn" title="Đổi thời tiết">🌙</button>
+    <button id="snd" class="top-btn" title="Âm thanh">🔊</button>
+    <div id="toast"></div>
+    <div id="hint">Chạm thu thập · Vồ đom đóm x6 · Click đúp để nhảy · Kéo ngang để dạo bước</div>
+    <div id="nav-bar">
+      <button class="loc-pill on" data-loc="0"><span class="le">🏠</span><span class="ln"> Nhà gỗ</span></button>
+      <button class="loc-pill" data-loc="1"><span class="le">🌲</span><span class="ln"> Rừng linh hồn</span></button>
+      <button class="loc-pill" data-loc="2"><span class="le">💧</span><span class="ln"> Thác ngân hà</span></button>
+      <button class="loc-pill" data-loc="3"><span class="le">🌙</span><span class="ln"> Hồ trăng</span></button>
+    </div>
+  </div>
+  <aside id="panel">
+    <button id="grab" aria-label="Thu gọn / mở rộng bảng"></button>
+    <div id="panel-head">
+      <nav id="tabs">
+        <button data-t="0" class="on"><span class="te">🌿</span><span class="tl"> Phép màu</span></button>
+        <button data-t="1"><span class="te">🐾</span><span class="tl"> Bạn rừng</span></button>
+        <button data-t="3"><span class="te">🏠</span><span class="tl"> Tổ ấm</span></button>
+        <button data-t="2"><span class="te">🏆</span><span class="tl"> Thành tựu</span></button>
+        <button data-t="5"><span class="te">📖</span><span class="tl"> Sổ tay</span></button>
+        <button data-t="4">⚙️</button>
+      </nav>
+      <button id="buy-mult" title="Chế độ mua">x1</button>
+    </div>
+    <div id="list"></div>
+    <div id="ach"></div>
+    <div id="cfg"></div>
+    <div id="nb"></div>
+  </aside>
+</div>
+
+<script src="js/04-core-game.js"></script>
+
+
+<script src="js/05-expansion-and-world.js"></script>
+
+<!-- Phase 8: integrated progression, mobile access, and world interactions -->
+<link rel="stylesheet" href="css/10-phase8-responsive.css">
+<script id="phase8-integrated-systems" src="js/06-phase8-integrated-systems.js"></script>
+
+
+<!-- RDD V9.6: consolidated presentation, audio and play-mode controls. Isolated add-on; core economy/render loop remains intact. -->
+<link rel="stylesheet" href="css/11-rdd-v96-style.css">
+<button id="rdd-v96-launch" type="button" aria-controls="rdd-v96-panel" aria-expanded="false"><span aria-hidden="true">✦</span> Chế độ chơi</button>
+<section id="rdd-v96-panel" role="dialog" aria-modal="false" aria-labelledby="rdd-v96-title">
+ <h2 id="rdd-v96-title">Tùy chỉnh trải nghiệm</h2><p class="v96-sub">Lưu riêng trên thiết bị này · Không thay đổi tiến trình hay công thức kinh tế.</p>
+ <div class="v96-label"><span>Phong cách hình ảnh</span></div>
+ <div class="v96-options" role="group" aria-label="Phong cách hình ảnh">
+  <button type="button" data-v96-mode="balanced">🌿 Cân bằng</button><button type="button" data-v96-mode="cinematic">🌙 Điện ảnh</button><button type="button" data-v96-mode="performance">⚡ Mượt nhẹ</button>
+ </div>
+ <div class="v96-label"><span>Âm thanh & nhạc nền</span><span id="rdd-v96-audio-state">Theo cài đặt game</span></div>
+ <div class="v96-options" role="group" aria-label="Âm thanh"><button type="button" data-v96-audio="on">🔊 Bật</button><button type="button" data-v96-audio="off">🔇 Tắt</button><button type="button" id="rdd-v96-test">♪ Thử âm</button></div>
+ <div class="v96-label"><label for="rdd-v96-volume">Âm lượng</label><span id="rdd-v96-volume-value">70%</span></div>
+ <input id="rdd-v96-volume" type="range" min="0" max="100" step="5" value="70" aria-label="Âm lượng tổng" />
+ <div class="v96-label"><span>Chuyển động nền</span></div>
+ <div class="v96-options" role="group" aria-label="Chuyển động nền"><button type="button" data-v96-motion="full">✨ Đầy đủ</button><button type="button" data-v96-motion="calm">🍃 Dịu nhẹ</button><button type="button" data-v96-motion="system">⚙️ Theo máy</button></div>
+ <div class="v96-foot"><span id="rdd-v96-status" aria-live="polite">Sẵn sàng</span><button type="button" class="v96-close" id="rdd-v96-close">Đóng</button></div>
+</section>
+<script id="rdd-v96-script" src="js/07-rdd-v96-script.js"></script>
+
+
+<script id="rdd-v15-ux-polish" src="js/08-rdd-v15-ux-polish.js"></script>
+
+
+<link rel="stylesheet" href="css/12-rdd-native-mobile-game-ui.css">
+<script id="rdd-native-mobile-game-ui-init" src="js/09-rdd-native-mobile-game-ui-init.js"></script>
+
+
+<link rel="stylesheet" href="css/13-rdd-mobile-layout-single-authority-v3.css">
+
+
+
+<link rel="stylesheet" href="css/14-rdd-v5-mobile-layout-authority.css">
+<link rel="stylesheet" href="css/15-m7-ui.css">
+<script src="js/10-mobile-sheet-controller.js"></script>
+<link rel="stylesheet" href="css/16-m9-ui.css">
+<script src="js/11-utility-launcher.js"></script>
+<link rel="stylesheet" href="css/17-m10-ui.css">
+<script src="js/12-m10-minigames.js"></script>
+
+<!-- V10.1 release core: one guarded persistence boundary for the established rdd5 save. -->
+<script id="rdd-v101-release-core" src="js/13-rdd-v101-release-core.js"></script>
+<link rel="stylesheet" href="css/18-rdd-v102-journey-style.css">
+<script id="rdd-v102-journey-core" src="js/14-rdd-v102-journey-core.js"></script>
+<link rel="stylesheet" href="css/19-rdd-v103-return-style.css">
+<script id="rdd-v103-return-core" src="js/15-rdd-v103-return-core.js"></script>
+<link rel="stylesheet" href="css/20-rdd-v104-clarity-style.css">
+<script id="rdd-v104-clarity-core" src="js/16-rdd-v104-clarity-core.js"></script>
+<script id="rdd-minigame-music" src="js/17-rdd-minigame-music.js"></script>
+<script id="rdd-evolution" src="js/18-rdd-evolution.js"></script>
+<link rel="stylesheet" href="css/21-rdd-v1017-unified-ui.css">
+<script id="rdd-v1017-unified-core" src="js/19-rdd-v1017-unified-core.js"></script>
+</body>
+</html>
+
