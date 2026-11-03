@@ -1,0 +1,54 @@
+
+/* V6: final cascade override. Mobile has two mutually-exclusive states: scene and upgrade sheet. */
+@media (max-width:859px), (pointer:coarse) and (max-width:1100px) {
+  :root { --rdd-v6-safe-bottom: env(safe-area-inset-bottom, 0px); --rdd-v6-dock-h: 76px; }
+  html, body { width:100%!important; height:100%!important; height:100dvh!important; overflow:hidden!important; }
+  #app { position:relative!important; display:block!important; width:100%!important; height:100%!important; height:100dvh!important; min-height:0!important; overflow:hidden!important; }
+  #stage { position:absolute!important; inset:0!important; width:100%!important; height:100%!important; min-height:0!important; overflow:hidden!important; }
+  /* compact resource HUD: reserve a distinct band for transient messages below it */
+  #hud { top:calc(9px + env(safe-area-inset-top,0px))!important; left:50%!important; right:auto!important; bottom:auto!important; transform:translateX(-50%)!important; width:min(190px,calc(100vw - 150px))!important; min-width:0!important; max-width:calc(100vw - 150px)!important; padding:6px 8px 7px!important; z-index:35!important; }
+  #num { font-size:clamp(23px,6vw,31px)!important; line-height:1.05!important; }
+  #rate { font-size:10px!important; line-height:1.2!important; }
+  #home { left:9px!important; }
+  #wth { left:55px!important; }
+  #snd { right:9px!important; }
+  .top-btn { top:calc(9px + env(safe-area-inset-top,0px))!important; width:40px!important; height:40px!important; }
+  #rdd-v96-launch { top:calc(57px + env(safe-area-inset-top,0px))!important; right:10px!important; left:auto!important; bottom:auto!important; max-width:112px!important; z-index:55!important; }
+  #toast { position:absolute!important; top:calc(104px + env(safe-area-inset-top,0px))!important; bottom:auto!important; left:50%!important; right:auto!important; transform:translateX(-50%)!important; width:max-content!important; max-width:calc(100vw - 28px)!important; white-space:normal!important; text-align:center!important; z-index:30!important; }
+  /* Default scene: one bottom dock and one upgrade button in separate vertical lanes. */
+  #nav-bar { position:absolute!important; left:10px!important; right:10px!important; top:auto!important; bottom:calc(8px + var(--rdd-v6-safe-bottom))!important; transform:none!important; width:auto!important; max-width:none!important; height:var(--rdd-v6-dock-h)!important; min-height:var(--rdd-v6-dock-h)!important; display:flex!important; align-items:stretch!important; justify-content:space-between!important; gap:4px!important; padding:5px!important; overflow:hidden!important; z-index:40!important; }
+  #nav-bar .loc-pill { display:flex!important; flex:1 1 0!important; min-width:0!important; height:100%!important; min-height:0!important; flex-direction:column!important; align-items:center!important; justify-content:center!important; gap:3px!important; padding:3px 1px!important; }
+  #nav-bar .loc-pill .li { font-size:20px!important; line-height:1!important; }
+  #nav-bar .loc-pill .ln { display:block!important; max-width:100%!important; overflow:hidden!important; text-overflow:ellipsis!important; white-space:nowrap!important; font-size:9px!important; line-height:1.1!important; }
+  #app.peek #nav-bar { display:flex!important; }
+  #app:not(.peek) #nav-bar { display:none!important; }
+  /* Hide legacy grab when collapsed. Only the dedicated launch button is shown above the dock. */
+  #app.peek #grab { display:none!important; }
+  #mobile-upgrade-launch { position:absolute!important; left:50%!important; right:auto!important; top:auto!important; bottom:calc(var(--rdd-v6-dock-h) + 22px + var(--rdd-v6-safe-bottom))!important; transform:translateX(-50%)!important; display:flex!important; align-items:center!important; justify-content:center!important; gap:8px!important; width:max-content!important; min-width:0!important; max-width:calc(100vw - 32px)!important; height:42px!important; min-height:42px!important; padding:0 14px!important; white-space:nowrap!important; z-index:45!important; }
+  #app.peek #mobile-upgrade-launch { display:flex!important; }
+  #app:not(.peek) #mobile-upgrade-launch { display:none!important; }
+  /* Upgrade sheet is a separate state; nav and launcher are both hidden while it is open. */
+  #panel { position:absolute!important; left:0!important; right:0!important; top:auto!important; bottom:0!important; width:100%!important; height:min(61dvh,590px)!important; min-height:0!important; max-height:76dvh!important; flex:none!important; display:flex!important; flex-direction:column!important; padding:0 0 var(--rdd-v6-safe-bottom)!important; overflow:hidden!important; border-radius:22px 22px 0 0!important; z-index:80!important; }
+  #app.peek #panel { display:none!important; height:0!important; min-height:0!important; max-height:0!important; }
+  #app:not(.peek) #panel { display:flex!important; }
+  #app:not(.peek) #grab { display:flex!important; position:relative!important; inset:auto!important; transform:none!important; flex:0 0 38px!important; width:100%!important; height:38px!important; min-height:38px!important; max-height:38px!important; border-radius:21px 21px 0 0!important; z-index:81!important; }
+  #app:not(.peek) #nav-bar, #app:not(.peek) #mobile-upgrade-launch { display:none!important; }
+  #panel-head { flex:0 0 auto!important; min-height:48px!important; max-height:54px!important; padding:5px 9px!important; overflow:hidden!important; }
+  #tabs { display:flex!important; flex-wrap:nowrap!important; flex:0 0 auto!important; max-width:100%!important; overflow-x:auto!important; overflow-y:hidden!important; gap:5px!important; scrollbar-width:none!important; padding:5px 8px!important; }
+  #tabs::-webkit-scrollbar { display:none!important; }
+  #tabs button { flex:0 0 auto!important; min-height:36px!important; max-width:44vw!important; padding:7px 10px!important; font-size:12px!important; }
+  #list, #ach, #cfg, #nb { flex:1 1 auto!important; min-height:0!important; overflow-y:auto!important; overscroll-behavior:contain!important; padding:8px 10px calc(12px + var(--rdd-v6-safe-bottom))!important; }
+  .row { grid-template-columns:40px minmax(0,1fr) auto!important; gap:8px!important; padding:9px!important; }
+  .ic { width:40px!important; height:40px!important; }
+  .tx b { font-size:13px!important; line-height:1.2!important; }
+  .tx small { font-size:10.5px!important; line-height:1.25!important; }
+  /* Modal settings has priority over the scene controls and stays within the viewport. */
+  #rdd-v96-panel { position:fixed!important; left:12px!important; right:12px!important; top:50%!important; bottom:auto!important; width:auto!important; max-width:none!important; max-height:calc(100dvh - 28px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important; overflow-y:auto!important; transform:translateY(-50%)!important; z-index:10021!important; }
+  @media (max-height:700px) {
+    #nav-bar { height:66px!important; min-height:66px!important; }
+    #mobile-upgrade-launch { bottom:calc(76px + var(--rdd-v6-safe-bottom))!important; }
+    #panel { height:min(64dvh,470px)!important; }
+    #toast { top:calc(92px + env(safe-area-inset-top,0px))!important; }
+  }
+}
+
