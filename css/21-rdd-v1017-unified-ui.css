@@ -1,0 +1,4 @@
+
+/* Canonical routes: old Phase 8 shortcuts delegate to the primary systems. */
+#rdd-phase8-modal [data-p8="mini"],#rdd-phase8-modal [data-p8="expedition"]{position:relative}#rdd-v96-panel [data-prev]{display:none!important}#rdd-prev-state{display:none!important}.rdd-v1017-safe-note{margin:9px 0;padding:8px 10px;border:1px solid rgba(255,224,125,.25);border-radius:9px;background:rgba(255,224,125,.07);color:#cbd8ef;font:11px/1.4 system-ui}
+
