@@ -1,0 +1,79 @@
+
+/* V3: one authoritative phone layout. Overrides conflicting legacy mobile rules without touching gameplay. */
+@media (max-width: 859px), (pointer: coarse) and (max-width: 1100px) {
+  :root { --rdd-safe-top: env(safe-area-inset-top, 0px); --rdd-safe-bottom: env(safe-area-inset-bottom, 0px); }
+  html, body { width:100%!important; height:100%!important; height:100dvh!important; min-height:0!important; overflow:hidden!important; overscroll-behavior:none!important; }
+  #app { display:block!important; position:relative!important; width:100%!important; height:100%!important; height:100dvh!important; min-height:0!important; overflow:hidden!important; }
+  #stage { position:absolute!important; inset:0!important; width:100%!important; height:100%!important; min-height:0!important; flex:none!important; overflow:hidden!important; }
+  #cv { width:100%!important; height:100%!important; }
+  /* Compact status strip: readable, not a giant desktop score card. */
+  #hud { position:absolute!important; top:calc(9px + var(--rdd-safe-top))!important; bottom:auto!important; left:50%!important; right:auto!important;
+    transform:translateX(-50%)!important; width:max-content!important; min-width:0!important; max-width:calc(100vw - 136px)!important;
+    padding:6px 11px 7px!important; border-radius:15px!important; text-align:center!important; }
+  #num { font-size:clamp(22px,6.4vw,29px)!important; line-height:1.02!important; letter-spacing:0!important; }
+  #rate { font-size:9px!important; line-height:1.2!important; margin-top:2px!important; white-space:nowrap!important; }
+  #badges { display:flex!important; justify-content:center!important; gap:3px!important; margin-top:3px!important; max-height:18px!important; overflow:hidden!important; }
+  #badges .badge { font-size:8px!important; line-height:1.15!important; padding:1px 4px!important; }
+  .top-btn { top:calc(10px + var(--rdd-safe-top))!important; width:38px!important; height:38px!important; border-radius:13px!important; font-size:16px!important; }
+  #home { left:9px!important; } #wth { left:53px!important; } #snd { right:9px!important; }
+  #rdd-v96-launch { top:calc(55px + var(--rdd-safe-top))!important; right:9px!important; left:auto!important; bottom:auto!important;
+    max-width:100px!important; padding:7px 8px!important; font-size:10px!important; border-radius:12px!important; }
+  /* Toasts are compact messages, not a full-width banner. */
+  #toast { left:50%!important; right:auto!important; top:calc(105px + var(--rdd-safe-top))!important; bottom:auto!important;
+    width:max-content!important; max-width:min(76vw,310px)!important; padding:7px 10px!important; border-radius:12px!important;
+    font-size:11px!important; line-height:1.25!important; white-space:normal!important; text-align:left!important;
+    overflow-wrap:anywhere!important; transform:translateX(-50%) translateY(-7px)!important; }
+  #toast.on { transform:translateX(-50%) translateY(0)!important; }
+  #hint { display:none!important; }
+  /* Bottom navigation is a compact dock. It exists only while the drawer is closed. */
+  #nav-bar { position:absolute!important; left:8px!important; right:8px!important; bottom:calc(8px + var(--rdd-safe-bottom))!important;
+    top:auto!important; width:auto!important; max-width:none!important; transform:none!important; display:flex!important;
+    flex-wrap:nowrap!important; justify-content:space-between!important; gap:4px!important; padding:5px!important;
+    border-radius:17px!important; z-index:40!important; overflow:hidden!important; }
+  #nav-bar .loc-pill { flex:1 1 0!important; min-width:0!important; min-height:52px!important; height:100%!important; padding:7px 2px!important;
+    font-size:clamp(9px,2.7vw,11px)!important; line-height:1.1!important; white-space:normal!important; text-align:center!important; }
+  #nav-bar .loc-pill .ln { display:inline!important; }
+  #app:not(.peek) #nav-bar { display:none!important; }
+  /* Upgrade entry sits above the dock with a clear gap; never shares the same row. */
+  #mobile-upgrade-launch { position:absolute!important; left:50%!important; right:auto!important; top:auto!important;
+    /* Reserve a dedicated lane above the 76px bottom dock; never overlap nav targets. */
+    bottom:calc(96px + var(--rdd-safe-bottom))!important; transform:translateX(-50%)!important; display:flex!important;
+    align-items:center!important; justify-content:center!important; min-height:42px!important; max-width:calc(100vw - 32px)!important;
+    padding:0 15px!important; border-radius:14px!important; z-index:45!important; white-space:nowrap!important; }
+  #app:not(.peek) #mobile-upgrade-launch { display:none!important; }
+  /* The hint is rendered inside the scene canvas; keep it above the roof rather than over the house interaction area. */
+  /* Upgrade drawer overlays the scene; it never becomes a permanent 40% desktop-style row. */
+  #panel { display:flex!important; position:absolute!important; left:0!important; right:0!important; top:auto!important;
+    bottom:0!important; width:100%!important; height:min(44dvh,390px)!important; max-height:54dvh!important; min-height:0!important;
+    flex:none!important; border-radius:21px 21px 0 0!important; border:1px solid rgba(231,211,158,.24)!important;
+    border-bottom:0!important; padding:0 0 var(--rdd-safe-bottom)!important; overflow:hidden!important; z-index:80!important;
+    box-shadow:0 -12px 36px rgba(0,0,0,.42)!important; }
+  #app.peek #panel { display:none!important; height:0!important; }
+  #grab { flex:0 0 25px!important; height:25px!important; min-height:25px!important; border-radius:21px 21px 0 0!important;
+    padding:0!important; margin:0!important; }
+  #grab::before { top:6px!important; }
+  #grab::after { display:none!important; }
+  #panel-head { flex:0 0 auto!important; min-height:45px!important; max-height:52px!important; padding:5px 8px!important; gap:5px!important; }
+  #tabs { flex:1 1 auto!important; min-width:0!important; display:flex!important; flex-wrap:nowrap!important; overflow-x:auto!important; overflow-y:hidden!important; gap:4px!important; scrollbar-width:none!important; }
+  #tabs::-webkit-scrollbar { display:none!important; }
+  #tabs button { flex:0 0 auto!important; min-width:max-content!important; min-height:34px!important; padding:7px 9px!important; font-size:11px!important; border-radius:10px!important; }
+  #buy-mult { flex:0 0 auto!important; min-width:40px!important; padding:7px 8px!important; font-size:11px!important; }
+  #list,#ach,#cfg,#nb { flex:1 1 auto!important; min-height:0!important; height:auto!important; max-height:none!important;
+    overflow-y:auto!important; overscroll-behavior:contain!important; padding:7px 9px calc(12px + var(--rdd-safe-bottom))!important; gap:6px!important; }
+  .row { grid-template-columns:36px minmax(0,1fr) auto!important; gap:8px!important; padding:8px!important; border-radius:12px!important; }
+  .ic { width:36px!important; height:36px!important; border-radius:10px!important; font-size:19px!important; }
+  .tx b { font-size:12px!important; line-height:1.2!important; }
+  .tx small { font-size:10px!important; line-height:1.25!important; }
+  .rt { min-width:55px!important; font-size:9px!important; }
+  /* Settings remain a distinct modal state, never another bottom drawer. */
+  #rdd-v96-panel { position:fixed!important; left:12px!important; right:12px!important; top:50%!important; bottom:auto!important;
+    width:auto!important; max-width:none!important; max-height:calc(100dvh - 32px - var(--rdd-safe-top) - var(--rdd-safe-bottom))!important;
+    overflow:auto!important; transform:translateY(-50%)!important; z-index:10021!important; }
+}
+@media (max-width:390px) {
+  #hud { max-width:calc(100vw - 122px)!important; padding:5px 8px 6px!important; }
+  #num { font-size:22px!important; } #rate { font-size:8px!important; }
+  #nav-bar .loc-pill { padding:7px 1px!important; }
+  #tabs button { padding:7px 7px!important; }
+}
+
