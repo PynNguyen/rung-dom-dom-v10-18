@@ -1,0 +1,4 @@
+
+/* V10.4: make full-roster state and mini-game start state explicit. */
+#rdd-v104-roster{position:absolute;z-index:12;left:16px;top:132px;display:none;gap:6px;align-items:center;max-width:260px;padding:7px 10px;border:1px solid rgba(130,238,205,.38);border-radius:13px;background:rgba(7,27,37,.84);box-shadow:0 8px 22px #0005;color:#dffdf1;font:700 11px/1.2 system-ui;backdrop-filter:blur(9px)}#rdd-v104-roster.show{display:flex}#rdd-v104-roster b{color:#a7f8d7}#m10-start-now{display:none;margin-left:auto;min-height:34px;padding:0 10px;border:1px solid rgba(255,225,145,.62);border-radius:10px;background:rgba(226,180,80,.18);color:#ffebae;font:800 11px system-ui;cursor:pointer}#m10.preparing #m10-start-now{display:block}@media(max-width:859px){#rdd-v104-roster{left:8px;top:106px;font-size:10px;padding:6px 8px;max-width:190px}#m10-start-now{min-height:32px;font-size:10px;padding:0 8px}}
+
