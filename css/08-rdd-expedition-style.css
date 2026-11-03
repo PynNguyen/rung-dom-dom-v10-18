@@ -1,0 +1,9 @@
+
+.exp-trip-track{position:relative;height:14px;border-radius:9px;background:#ffffff14;margin:12px 4px 4px;border:1px solid #ffffff22}
+.exp-trip-track span{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#5aa6ff,#9bffd6);transition:width .9s linear}
+.exp-trip-track i{position:absolute;top:50%;font-style:normal;font-size:17px;transform:translate(-50%,-50%);transition:left .9s linear;animation:tripBob .6s ease-in-out infinite alternate}
+@keyframes tripBob{from{margin-top:-3px}to{margin-top:3px}}
+#exp-trip-chip{position:absolute;right:12px;top:calc(70px + var(--safe-top,0px));z-index:12;border:1px solid rgba(155,255,214,.45);background:rgba(8,16,38,.92);color:#cfffe9;border-radius:14px;padding:8px 11px;font:700 12px/1 system-ui,sans-serif;cursor:pointer;max-width:55vw}
+#exp-trip-chip.ready{border-color:#ffe07d;color:#ffe9a8;animation:chipPulse 1.2s ease-in-out infinite}
+@keyframes chipPulse{50%{box-shadow:0 0 18px #ffe07d88}}
+
