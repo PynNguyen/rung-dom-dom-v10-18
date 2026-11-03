@@ -1,0 +1,7 @@
+
+@media(max-width:859px){
+  #rdd-v102-journey{width:auto!important;max-width:none!important}
+  #rdd-v102-open{grid-template-columns:23px auto!important;padding:6px 9px!important}
+  #rdd-v102-open>span:nth-child(2){display:none!important}
+}
+
