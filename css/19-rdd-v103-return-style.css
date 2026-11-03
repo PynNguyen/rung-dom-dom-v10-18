@@ -1,0 +1,4 @@
+
+/* V10.3: a single, always reachable escape hatch above every game overlay. */
+#rdd-v103-return{position:fixed;z-index:10000;left:max(12px,env(safe-area-inset-left,0px));top:calc(12px + env(safe-area-inset-top,0px));display:none;align-items:center;gap:8px;min-height:46px;padding:0 15px;border:1px solid rgba(255,232,165,.72);border-radius:24px;background:linear-gradient(135deg,rgba(33,51,100,.97),rgba(10,17,45,.98));color:#fff4ca;font:800 14px/1 system-ui,-apple-system,sans-serif;letter-spacing:.01em;box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 22px rgba(255,216,115,.18);cursor:pointer;touch-action:manipulation}#rdd-v103-return.show{display:flex}#rdd-v103-return:hover{filter:brightness(1.12);transform:translateY(-1px)}#rdd-v103-return:active{transform:scale(.96)}#rdd-v103-return span{font-size:20px;line-height:1}@media(max-width:560px){#rdd-v103-return{min-height:44px;padding:0 13px;font-size:13px;left:8px;top:calc(8px + env(safe-area-inset-top,0px))}}
+
