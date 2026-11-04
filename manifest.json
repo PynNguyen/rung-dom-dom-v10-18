@@ -20,7 +20,8 @@
     "css/18-rdd-v102-journey-style.css",
     "css/19-rdd-v103-return-style.css",
     "css/20-rdd-v104-clarity-style.css",
-    "css/21-rdd-v1017-unified-ui.css"
+    "css/21-rdd-v1017-unified-ui.css",
+    "css/22-rdd-mobile-final-authority.css"
   ],
   "scripts": [
     "js/01-head-responsive-guard.js",
@@ -41,6 +42,8 @@
     "js/16-rdd-v104-clarity-core.js",
     "js/17-rdd-minigame-music.js",
     "js/18-rdd-evolution.js",
-    "js/19-rdd-v1017-unified-core.js"
+    "js/19-rdd-v1017-unified-core.js",
+    "js/20-rdd-mobile-final.js"
   ]
 }
+
