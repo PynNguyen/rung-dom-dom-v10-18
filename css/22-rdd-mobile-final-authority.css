@@ -1,0 +1,74 @@
+/* Mobile final authority: loaded last to make the phone layout predictable. */
+@media (max-width:859px){
+  html.rdd-mobile body #app{
+    --rdd-mobile-badge-space:70px;
+    --rdd-mobile-dock:64px;
+    --m7-dock:64px;
+  }
+
+  /* Keep every primary target above the 44px accessibility minimum. */
+  html.rdd-mobile body #app #stage #home,
+  html.rdd-mobile body #app #stage #wth,
+  html.rdd-mobile body #app #stage #snd,
+  html.rdd-mobile body #rdd-v96-launch#rdd-v96-launch{
+    top:calc(8px + env(safe-area-inset-top,0px))!important;
+    width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+    border-radius:15px!important;
+  }
+  html.rdd-mobile body #app #stage #home{left:8px!important}
+  html.rdd-mobile body #app #stage #wth{left:62px!important}
+  html.rdd-mobile body #app #stage #snd{right:8px!important}
+  html.rdd-mobile body #rdd-v96-launch#rdd-v96-launch{right:62px!important}
+  html.rdd-mobile body #app #stage #hud{
+    top:calc(7px + env(safe-area-inset-top,0px))!important;
+    width:min(178px,calc(100% - 234px))!important;
+    min-height:62px!important;padding:6px 8px!important;
+  }
+  html.rdd-mobile body #app #stage #hud #num{font-size:25px!important}
+  html.rdd-mobile body #app #stage #hud #cps{font-size:10px!important}
+  html.rdd-mobile body #app #stage #hud #badges .badge{font-size:9px!important}
+
+  /* Netlify's plan badge is an isolated iframe. Reserve its lane instead of letting it cover controls. */
+  html.rdd-mobile body #app.peek #stage #nav-bar{
+    bottom:calc(var(--rdd-mobile-badge-space) + env(safe-area-inset-bottom,0px))!important;
+    height:var(--rdd-mobile-dock)!important;min-height:var(--rdd-mobile-dock)!important;
+    left:8px!important;right:calc(8px + 88px + 8px)!important;gap:4px!important;
+  }
+  html.rdd-mobile body #app.peek #stage #mobile-upgrade-launch{
+    bottom:calc(var(--rdd-mobile-badge-space) + env(safe-area-inset-bottom,0px))!important;
+    width:88px!important;height:var(--rdd-mobile-dock)!important;min-height:var(--rdd-mobile-dock)!important;
+    right:8px!important;
+  }
+  html.rdd-mobile body #app.peek #stage #nav-bar .loc-pill .ln{font-size:10px!important;line-height:1.08!important}
+
+  /* An opened sheet stops above the badge and leaves the game scene correctly sized. */
+  html.rdd-mobile body #app:not(.peek) #stage{
+    inset:0 0 calc(var(--m7-sheet) + var(--rdd-mobile-badge-space)) 0!important;
+    bottom:calc(var(--m7-sheet) + var(--rdd-mobile-badge-space))!important;
+  }
+  html.rdd-mobile body #app:not(.peek) #panel{
+    bottom:var(--rdd-mobile-badge-space)!important;
+    height:min(47dvh,410px)!important;max-height:calc(100dvh - 150px)!important;
+    border-radius:20px 20px 0 0!important;
+  }
+  html.rdd-mobile body #app #panel #tabs button{height:50px!important;min-height:50px!important}
+  html.rdd-mobile body #app #panel #tabs button .tl{font-size:10px!important}
+
+  /* Blur layers are expensive on mid-range phones and do not carry gameplay information. */
+  html.rdd-mobile body #app #panel,
+  html.rdd-mobile body #app #stage #nav-bar,
+  html.rdd-mobile body #app #stage #hud,
+  html.rdd-mobile body #rdd-v96-panel{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  html.rdd-mobile.rdd-mobile-lite body #app #stage::after{mix-blend-mode:normal!important;background:rgba(3,8,13,.2)!important}
+}
+
+@media (max-width:380px){
+  html.rdd-mobile body #app.peek #stage #nav-bar{right:calc(8px + 82px + 7px)!important}
+  html.rdd-mobile body #app.peek #stage #mobile-upgrade-launch{width:82px!important}
+  html.rdd-mobile body #app.peek #stage #nav-bar .loc-pill .ln{font-size:9px!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html.rdd-mobile body #app *,html.rdd-mobile body #app *::before,html.rdd-mobile body #app *::after{transition-duration:.01ms!important}
+}
+
